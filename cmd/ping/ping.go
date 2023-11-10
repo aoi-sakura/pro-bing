@@ -43,6 +43,7 @@ func main() {
 	size := flag.Int("s", 24, "")
 	ttl := flag.Int("l", 64, "TTL")
 	privileged := flag.Bool("privileged", false, "")
+	source := flag.String("S", "", "source host")
 	flag.Usage = func() {
 		fmt.Print(usage)
 	}
@@ -91,6 +92,10 @@ func main() {
 	pinger.Timeout = *timeout
 	pinger.TTL = *ttl
 	pinger.SetPrivileged(*privileged)
+	//if source != nil && *source != "" {
+	//      fmt.Printf("source ip is %s\n", *source)
+	//}
+	pinger.Source = *source
 
 	fmt.Printf("PING %s (%s):\n", pinger.Addr(), pinger.IPAddr())
 	err = pinger.Run()

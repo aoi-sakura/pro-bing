@@ -858,6 +858,7 @@ func (p *Pinger) listen() (packetConn, error) {
 
 	if p.ipv4 {
 		var c icmpv4Conn
+		//fmt.Printf("p.Source is %s\n", p.Source)
 		c.c, err = icmp.ListenPacket(ipv4Proto[p.protocol], p.Source)
 		conn = &c
 	} else {

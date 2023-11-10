@@ -9,7 +9,7 @@ all: style vet build test
 .PHONY: build
 build:
 	@echo ">> building ping"
-	GO111MODULE=$(GO111MODULE) $(GO) build $(GOOPTS) ./cmd/ping
+	CGO_ENABLED=0 GO111MODULE=$(GO111MODULE) $(GO) build $(GOOPTS) ./cmd/ping
 
 .PHONY: style
 style:
